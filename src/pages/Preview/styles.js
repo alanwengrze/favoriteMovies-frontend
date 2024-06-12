@@ -12,31 +12,8 @@ export const Container = styled.div`
   > main{
     grid-area: content;
     overflow-y: auto;
-    margin-top: 3rem;
     padding: 0 8rem;
   }
-`;
-
-export const Content = styled.div`
-    max-width: 112rem;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
-
-    .tags{
-      display: flex;
-      align-items: center;
-      gap: .8rem;
-      margin-block: 3rem;
-    }
-
-    p{
-      line-height: 2.8rem;
-      text-align: justify;
-      opacity: .9;
-      font-weight: 300;
-    }
 `;
 
 export const Creator = styled.div`

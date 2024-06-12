@@ -1,9 +1,11 @@
-import { Container, Creator, Content } from "./styles";
+import { Container, Creator } from "./styles";
 import { Header } from "../../components/Header";
 import { Evaluation } from "../../components/Evaluation";
 import {ButtonText} from "../../components/ButtonText";
+import { Content } from "../../components/Content";
 import { Tag } from "../../components/Tag";
-import { FiClock } from 'react-icons/fi'
+import { FiClock } from 'react-icons/fi';
+import { Link } from "react-router-dom";
 
 export function Preview() {
   return (
@@ -11,7 +13,7 @@ export function Preview() {
       <Header />
       <main>
         <Content>
-          <ButtonText title="Voltar"/>
+          <ButtonText title="Voltar"to="/"/>
           <Evaluation title="Interestelar"/>
           <Creator>
             <img src="https://github.com/alanwengrze.png" alt="Foto do usuário" />

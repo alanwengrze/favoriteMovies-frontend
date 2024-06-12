@@ -1,10 +1,9 @@
 import { Container } from "./styles";
-import { FiSearch } from 'react-icons/fi'
 
-export function Input({ ...rest }) {
+export function Input({icon: Icon, ...rest }) {
   return (
     <Container>
-      <FiSearch />
+      {Icon && <Icon />}
       <input {...rest} />
     </Container>
   );

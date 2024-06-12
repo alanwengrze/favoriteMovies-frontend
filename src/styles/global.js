@@ -19,4 +19,12 @@ export default createGlobalStyle`
     font-size: 1.6rem;
   }
 
+  a{
+    text-decoration: none;
+  }
+
+  button{
+    cursor: pointer;
+  }
+
 `;

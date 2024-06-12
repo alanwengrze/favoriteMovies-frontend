@@ -42,10 +42,12 @@ export const Profile = styled.div`
       cursor: pointer;
     }
   }
-
-  > img{
-    width: 4.8rem;
-    height: 4.8rem;
-    border-radius: 50%;
+  > a {
+    > img{
+      width: 4.8rem;
+      height: 4.8rem;
+      border-radius: 50%;
+    }
   }
+ 
 `
