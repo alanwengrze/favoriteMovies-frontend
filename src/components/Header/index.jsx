@@ -1,6 +1,5 @@
 import { Container, Profile } from "./styles";
 import { Input } from "../Input";
-import { ButtonText } from "../ButtonText";
 
 export function Header(){
   return(

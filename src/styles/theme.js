@@ -6,6 +6,7 @@ export default {
 
     WHITE: "#F4EDE8",
     YELLOW: "#f4d35e",
+    BGYELLOW:"rgba(236, 198, 95, 0.6)",
 
     GRAY_100: "#999591",
     GRAY_300: "#666360",
