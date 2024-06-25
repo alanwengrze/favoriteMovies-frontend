@@ -3,7 +3,10 @@ import { Input } from "../Input";
 import { FiSearch } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
+
 export function Header(){
+  const { signOut } = useAuth();
   return(
     <Container>
       <h1>FavoriteMovies</h1>
@@ -15,7 +18,12 @@ export function Header(){
       <Profile>
         <div className="profile-wrapper">
           <span>Alan Wengrze</span>
-          <button type="button">Sair</button>
+          <button 
+            type="button"
+            onClick={signOut}
+          >
+                Sair
+          </button>
         </div>
         <Link to="/profile">
           <img src="https://github.com/alanwengrze.png" alt="Foto do usuário" />
