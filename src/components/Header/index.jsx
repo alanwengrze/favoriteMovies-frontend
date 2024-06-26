@@ -3,10 +3,14 @@ import { Input } from "../Input";
 import { FiSearch } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg";
+import { api } from "../../services/api";
+
 import { useAuth } from "../../hooks/auth";
 
 export function Header(){
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
   return(
     <Container>
       <h1>FavoriteMovies</h1>
@@ -17,7 +21,7 @@ export function Header(){
       />
       <Profile>
         <div className="profile-wrapper">
-          <span>Alan Wengrze</span>
+          <span>{user.name}</span>
           <button 
             type="button"
             onClick={signOut}
@@ -26,7 +30,7 @@ export function Header(){
           </button>
         </div>
         <Link to="/profile">
-          <img src="https://github.com/alanwengrze.png" alt="Foto do usuário" />
+          <img src={avatarUrl} alt={user.name} />
         </Link>
       </Profile>
     </Container>
