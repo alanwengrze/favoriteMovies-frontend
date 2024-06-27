@@ -18,7 +18,7 @@ export const Container = styled.div`
     
 
     svg{
-      color: ${({theme})=> theme.COLORS.YELLOW};
+      color: ${({theme, $isnew})=> $isnew? theme.COLORS.YELLOW : theme.COLORS.RED};
       font-size: 1.8rem;
       margin-right: 1rem;
     }
