@@ -8,9 +8,10 @@ import { api } from "../../services/api";
 
 import { useAuth } from "../../hooks/auth";
 
-export function Header(){
+export function Header({onChange}){
   const { signOut, user } = useAuth();
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
   return(
     <Container>
       <h1>FavoriteMovies</h1>
@@ -18,6 +19,7 @@ export function Header(){
         type="text" 
         placeholder="Pesquisar"
         icon={FiSearch}
+        onChange={onChange}
       />
       <Profile>
         <div className="profile-wrapper">

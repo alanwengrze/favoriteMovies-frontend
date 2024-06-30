@@ -3,12 +3,32 @@ import { Header } from "../../components/Header";
 import { Movie } from "../../components/Movie";	
 import { Content } from "../../components/Content";
 import { ButtonText } from "../../components/ButtonText";
+
 import { FiPlus } from "react-icons/fi";
 
+import { api } from "../../services/api";
+
+import { useState, useEffect } from "react";
+
 export function Home(){
+  const [search, setSearch] = useState("");
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    if(search){
+      async function fetchMovies(){
+        const response = await api.get(`/movies_notes?title=${search}`);
+        setMovies(response.data);
+        console.log(response.data)
+      }
+      fetchMovies();
+    }
+    
+  },[search]);
   return(
     <Container>
-      <Header />
+      <Header 
+        onChange={e => setSearch(e.target.value)}
+      />
       <main>
         <Content>
           <header>
@@ -21,15 +41,15 @@ export function Home(){
               <FiPlus />
             </ButtonText>
           </header>
-          <Movie
-            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-          />
-          <Movie
-            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-          />
-          <Movie
-            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-          />
+          {
+            movies && movies.map(movie => (
+              <Movie
+                key={String(movie.id)}
+                data={movie}
+              />
+                
+            ))
+          }
         </Content>
       </main>
     </Container>
