@@ -68,6 +68,10 @@ export function New() {
     }
   }
 
+  function handleBack(){
+    navigate(-1);
+  }
+
   return (
     <Container>
       <Header />
@@ -75,7 +79,7 @@ export function New() {
         <Content>
           <ButtonText 
           title="Voltar"
-          to="/"
+          onClick={handleBack}
           icon
           />
           <h1>Novo filme</h1>

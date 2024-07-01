@@ -9,6 +9,7 @@ export const Container = styled(Link)`
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  width: fit-content;
 
   svg{
     color: ${({ theme }) => theme.COLORS.YELLOW};

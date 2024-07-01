@@ -22,6 +22,15 @@ export function Preview() {
 
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
+  async function handleRemove(){
+    if(window.confirm("Tem certeza que deseja excluir este filme?")){
+      await api.delete(`/movies_notes/${params.id}`);
+      navigate(-1);
+    }else{
+      return;
+    }
+  }
+
   function handleBack(){
     navigate(-1);
   }
@@ -40,10 +49,16 @@ export function Preview() {
         { data &&
           <main>
             <Content>
-              <ButtonText 
-                title="Voltar"
-                onClick={handleBack}
-              />
+              <div className="wrapper-buttons">
+                <ButtonText
+                  title="Voltar"
+                  onClick={handleBack}
+                />
+                <ButtonText 
+                  title="Excluir filme"
+                  onClick={handleRemove}
+                />
+              </div>
               <Evaluation title={data.title}/>
               <Creator>
                 <img src={avatarUrl} alt={user.name} />

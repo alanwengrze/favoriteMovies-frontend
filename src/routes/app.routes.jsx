@@ -13,7 +13,7 @@ export function AppRoutes() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/new" element={<New />} />
       
-      {/* <Route path='*'element={<Navigate to='/' />} /> */}
+      <Route path='*'element={<Navigate to='/' />} />
     </Routes>
   );
 }

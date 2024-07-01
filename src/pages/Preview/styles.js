@@ -13,6 +13,13 @@ export const Container = styled.div`
     grid-area: content;
     overflow-y: auto;
     padding: 0 8rem;
+
+    > div{
+      .wrapper-buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 `;
 
