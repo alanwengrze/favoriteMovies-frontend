@@ -4,7 +4,7 @@ import { SignIn } from '../pages/SignIn';
 import { SignUp } from '../pages/SignUp';
 
 export function AuthRoutes() {
-  const user = localStorage.getItem("@rocketnotes:user");
+  const user = localStorage.getItem("@favoritemovies:user");
   return (
     <Routes>
       <Route path="/" element={<SignIn />} />

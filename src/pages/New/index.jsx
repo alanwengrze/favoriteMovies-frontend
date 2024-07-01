@@ -60,7 +60,12 @@ export function New() {
   }
 
   function handleCancel(){
-    navigate("/");
+    const confirm = window.confirm("Tem certeza que deseja cancelar?");
+    if(confirm){
+      navigate("/");
+    }else{
+      return;
+    }
   }
 
   return (

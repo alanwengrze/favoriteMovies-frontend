@@ -7,12 +7,21 @@ import { ButtonText } from "../../components/ButtonText";
 import { FiPlus } from "react-icons/fi";
 
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 
 export function Home(){
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
+
+  const navigate = useNavigate();
+
+  function handlePreview(id){
+    navigate(`/preview/${id}`);
+    console.log(id)
+  }
+
   useEffect(() => {
     if(search){
       async function fetchMovies(){
@@ -24,6 +33,16 @@ export function Home(){
     }
     
   },[search]);
+
+  useEffect(()=>{
+    async function getMovies(){
+      const response = await api.get("/movies_notes");
+      setMovies(response.data);
+      console.log(response.data)
+    }
+    getMovies();
+  }, []);
+
   return(
     <Container>
       <Header 
@@ -46,6 +65,7 @@ export function Home(){
               <Movie
                 key={String(movie.id)}
                 data={movie}
+                onClick={() => handlePreview(movie.id)}
               />
                 
             ))
