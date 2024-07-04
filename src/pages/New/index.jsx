@@ -23,6 +23,9 @@ export function New() {
   const navigate = useNavigate();
 
   function handleAddTag(){
+    if(newTag === ""){
+      return alert("Não é possível adicionar gêneros vazios.");
+    }
     setTags(prevState => [...prevState, newTag]);
     setNewTag("");
   }
@@ -46,7 +49,11 @@ export function New() {
     }
     
     if(newTag){
-      return alert("Você deixou uma tag no campo para adicionar, mas não clicou em adicionar. 😥 Clique para adicionar ou deixe o campo vazio.")
+      return alert("Você deixou um gênero no campo para adicionar, mas não clicou em adicionar. 😥 Clique para adicionar ou deixe o campo vazio.")
+    }
+
+    if(tags.length === 0){
+      return alert("Você precisa adicionar pelo menos um gênero.")
     }
 
     await api.post("/movies_notes", {
@@ -103,7 +110,7 @@ export function New() {
             <h2>Marcadores</h2>
             <div className="tags">
               <MovieItem 
-                placeholder="Novo marcador"
+                placeholder="Novo gênero. ex: comédia"
                 value={newTag}
                 onChange={e => setNewTag(e.target.value)}
                 onClick={handleAddTag}
@@ -111,6 +118,7 @@ export function New() {
               />
 
               {
+                tags&&
                 tags.map((tag, index) => (
                   <MovieItem
                     key={index}
