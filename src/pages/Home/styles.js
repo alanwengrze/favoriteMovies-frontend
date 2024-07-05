@@ -42,3 +42,21 @@ export const Container = styled.div`
   }
 
 `
+export const Menu = styled.ul`
+  background-color: ${({theme})=> theme.COLORS.BACKGROUND_900};
+  padding-top: 6.4rem;
+  text-align: center;
+  display: flex;
+  gap: 1rem;
+
+  > li {
+    	margin-bottom: 2rem;
+      padding: .5rem;
+      background-color: ${({theme})=> theme.COLORS.BACKGROUND_700};
+      border-radius: .5rem;
+    button{
+      text-transform: capitalize;
+    }
+  }
+
+`;

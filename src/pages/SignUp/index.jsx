@@ -17,6 +17,11 @@ export function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/;
+
+
   const navigate = useNavigate();
 
   function handleSignUp() {
@@ -24,6 +29,14 @@ export function SignUp() {
       alert("Preencha todos os campos");
       return;
     }
+
+    if(!emailRegex.test(email)){
+      return alert("E-mail inválido. Digite um e-mail válido. Ex: yourname@example.com");
+    }
+    if(!passwordRegex.test(password)){
+      return alert("Senha fraca. Sua senha deve conter pelo menos 8 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 caractere especial");
+    }
+
     api.post("/users", {name, email, password})
     .then(() => {
       alert("Cadastrado com sucesso");

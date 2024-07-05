@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Container = styled(Link)`
   background: transparent;
   border: none;
-  color: ${({ theme }) => theme.COLORS.YELLOW};
+  color: ${({ theme, $isactive }) => $isactive ? theme.COLORS.YELLOW : theme.COLORS.GRAY_100};
   line-height: 2.4rem;
   cursor: pointer;
   display: flex;

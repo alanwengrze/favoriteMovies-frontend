@@ -18,7 +18,11 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-size: 1.6rem;
   }
-
+  
+  li{
+    list-style: none;
+  }
+  
   a{
     text-decoration: none;
   }
