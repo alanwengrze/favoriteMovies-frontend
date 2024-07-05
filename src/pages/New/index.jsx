@@ -38,6 +38,8 @@ export function New() {
     if(!title){
       return alert("Você precisa adicionar um título.")
     }
+
+
     if(!rating){
       return alert("Você precisa adicionar uma nota (de 0 a 5).")
     }
@@ -56,13 +58,19 @@ export function New() {
       return alert("Você precisa adicionar pelo menos um gênero.")
     }
 
-    await api.post("/movies_notes", {
+    try {
+       await api.post("/movies_notes", {
       title,
       rating: Number(rating),
       description,
       movies_tags: tags
     });
     alert("Filme criado com sucesso");
+    } catch (error) {
+      if(error.response){
+        alert(error.response.data.message);
+      }
+    }
     navigate("/");
   }
 
@@ -88,6 +96,7 @@ export function New() {
           title="Voltar"
           onClick={handleBack}
           icon
+          isActive
           />
           <h1>Novo filme</h1>
           <Form>
@@ -98,7 +107,7 @@ export function New() {
                 onChange={e => setTitle(e.target.value)}
               />
               <Input
-                type="text"
+                type="number"
                 placeholder="Sua nota (de 0 a 5)"
                 onChange={e => setRating(e.target.value)}
               />

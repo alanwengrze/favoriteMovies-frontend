@@ -56,6 +56,7 @@ export function Profile(){
         <ButtonText 
           title="Voltar"
           onClick={handleBack}
+          isActive
         />
       </header>
       <Form>
