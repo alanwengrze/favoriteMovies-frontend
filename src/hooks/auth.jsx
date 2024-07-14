@@ -8,15 +8,18 @@ function AuthProvider({ children }) {
 
   async function signIn({email, password}){
     try {
-      const response = await api.post("/sessions", {email, password});
-      const { user, token } = response.data;
+      const response = await api.post(
+        "/sessions", 
+        {email, password},
+        {
+          withCredentials: true
+        }
+      );
+      const { user } = response.data;
 
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-      setData({user, token});
+      setData({user});
 
       localStorage.setItem("@favoritemovies:user", JSON.stringify(user));
-      localStorage.setItem("@favoritemovies:token", token);
 
     } catch (error) {
       if(error.response){
@@ -29,7 +32,6 @@ function AuthProvider({ children }) {
 
   function signOut(){
     localStorage.removeItem("@favoritemovies:user");
-    localStorage.removeItem("@favoritemovies:token");
 
     setData({});
   }
@@ -48,8 +50,7 @@ function AuthProvider({ children }) {
       await api.put("/users", user);
       localStorage.setItem("@favoritemovies:user", JSON.stringify(user));
       setData({
-        user,
-        token: data.token
+        user
       })
       alert("Seu perfil foi atualizado");
     }catch(error){
@@ -63,16 +64,14 @@ function AuthProvider({ children }) {
 
   useEffect(()=>{
     const user = localStorage.getItem("@favoritemovies:user");
-    const token = localStorage.getItem("@favoritemovies:token");
 
-    if(user && token){
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    if(user){
+
+      setData({
+        user: JSON.parse(user),
+      });
     }
 
-    setData({
-      user: JSON.parse(user),
-      token,
-    });
   }, []);
 
   return(

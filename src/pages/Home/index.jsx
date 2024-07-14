@@ -42,7 +42,6 @@ export function Home(){
     async function fetchTags(){
       const response = await api.get("/movies_tags");
       setTags(response.data);
-      console.log(response.data)
     }
     fetchTags();
   }, []);
@@ -51,7 +50,6 @@ export function Home(){
       async function fetchMovies(){
         const response = await api.get(`/movies_notes?title=${search}&movies_tags=${tagsSelected}`);
         setMovies(response.data);
-        console.log(response.data)
       }
       fetchMovies();
     

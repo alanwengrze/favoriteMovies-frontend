@@ -39,7 +39,6 @@ export function Preview() {
     async function fetchMovie(){
       const response = await api.get(`/movies_notes/${params.id}`);
       setData(response.data);
-      console.log(response.data)
     }
     fetchMovie();
   }, []);
