@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakPoints";
 
 export const Container = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ export const Container = styled.div`
   > main{
     grid-area: content;
     overflow-y: auto;
-    padding: 0 8rem;
+    padding: 0 4rem;
   }
 `;
 
@@ -50,6 +51,12 @@ export const Form = styled.form`
     > button:first-child{
       background-color: #0c0f0a;
       color: ${({ theme }) => theme.COLORS.YELLOW};
+    }
+  }
+
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}){
+    .input-wrapper{
+      flex-direction: column;
     }
   }
 `;

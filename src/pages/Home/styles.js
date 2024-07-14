@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakPoints";
 
 export const Container = styled.div`
   width: 100%;
@@ -11,13 +12,12 @@ export const Container = styled.div`
   "content";
 
   > main{
-    padding: 0 8rem;
+    padding: 0 4rem;
     overflow-y: auto;
 
     > div{
        > header{
         display: flex;
-        align-items: center;
         justify-content: space-between;
 
        > a {
@@ -41,10 +41,17 @@ export const Container = styled.div`
     }
   }
 
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+    > main header{
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
 `
 export const Menu = styled.ul`
   background-color: ${({theme})=> theme.COLORS.BACKGROUND_900};
-  padding-top: 6.4rem;
+  padding-top: 4.4rem;
   text-align: center;
   display: flex;
   gap: 1rem;
@@ -58,5 +65,7 @@ export const Menu = styled.ul`
       text-transform: capitalize;
     }
   }
-
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}){
+    align-items: center;
+  }
 `;

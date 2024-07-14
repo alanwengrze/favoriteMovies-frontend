@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { DEVICE_BREAKPOINTS } from "./deviceBreakPoints";
 
 export default createGlobalStyle`
   *{
@@ -10,6 +11,20 @@ export default createGlobalStyle`
 
   :root{
     font-size: 62.5%;
+
+    @media (max-width: ${DEVICE_BREAKPOINTS.MD}) {
+      body{
+        font-size: 1.4rem;
+      }
+    }
+    @media (max-width: ${DEVICE_BREAKPOINTS.SM}) {
+      body, p, button{
+        font-size: 1.2rem;
+      }
+      h1{
+        font-size: 1.8rem;
+      }
+    }
   }
 
   body, button, input, textarea{

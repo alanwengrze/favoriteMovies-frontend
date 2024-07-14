@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakPoints";
 
 export const Container = styled.div`
   width: 100%;
@@ -8,7 +9,7 @@ export const Container = styled.div`
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
     display: flex;
-    padding: 0 8rem;
+    padding: 0 4rem;
   }
 `;
 
@@ -18,7 +19,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  padding: 0 4rem;
   svg{
     color: ${({ theme }) => theme.COLORS.GRAY_100};
     font-size: 2rem;
@@ -67,9 +68,16 @@ export const Avatar = styled.div`
     }
 
     > input{
-    display: none;
-  }
+      display: none;
+    }
   }
 
- 
+  @media (max-width: ${DEVICE_BREAKPOINTS.SM}){
+    width: 10rem;
+    height: 10rem;
+    > img{
+      width: 10rem;
+      height: 10rem;
+    }
+  }
 `;
